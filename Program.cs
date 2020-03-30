@@ -28,7 +28,10 @@ class Program
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
                 // Send the message to the connected TcpServer. 
                 stream.Write(data, 0, data.Length);
-                Console.WriteLine("Sent: {0}", message);
+                Thread.Sleep(50);
+                data = System.Text.Encoding.ASCII.GetBytes("\u0044\u0001NICK12WIADOMOSC");
+                stream.Write(data, 0, data.Length);
+
                 // Bytes Array to receive Server Response.
                 data = new Byte[256];
                 String response = String.Empty;
